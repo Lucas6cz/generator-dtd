@@ -51,7 +51,7 @@
   tables.
 -->
 <!ELEMENT context (property*, plugin*, commentGenerator?, (connectionFactory | jdbcConnection), javaTypeResolver?,
-                         javaModelGenerator, sqlMapGenerator?, javaClientGenerator?, javaServiceGenerator?, table+)>
+                         javaModelGenerator, sqlMapGenerator?, javaClientGenerator?, javaServiceGenerator?, springRestAPIGenerator?, table+)>
 <!ATTLIST context id ID #REQUIRED
   defaultModelType CDATA #IMPLIED
   targetRuntime CDATA #IMPLIED
@@ -151,13 +151,22 @@
     The javaServiceGenerator element is used to define properties of the Java service Generator.
 	The Java Service Generator builds Java interface and implementation classes
 	(as required) for each table.
-	If this element is missing, then the generator will not build Java Client classes.
+	If this element is missing, then the generator will not build Java Service classes.
 -->
 <!ELEMENT javaServiceGenerator (property*)>
 <!ATTLIST javaServiceGenerator
   targetPackage CDATA #REQUIRED
   targetProject CDATA #REQUIRED
   implementationPackage CDATA #IMPLIED>
+  
+<!--
+    The springRestAPIGenerator element is used to define properties of the Spring RestController Generator.
+	If this element is missing, then the generator will not build Spring RestController classes.
+-->
+<!ELEMENT springRestAPIGenerator (property*)>
+<!ATTLIST springRestAPIGenerator
+  targetPackage CDATA #REQUIRED
+  targetProject CDATA #REQUIRED>
 
 <!--
   The table element is used to specify a database table that will be the source information
